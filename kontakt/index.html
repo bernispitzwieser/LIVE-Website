@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt | Brassdorfer</title>
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<meta property="og:title" content="Kontakt | Brassdorfer">
+<meta property="og:description" content="Schreib uns einfach unverbindlich eine Nachricht und wir melden uns bei Dir!">
+<meta property="og:image" content="https://www.brassdorfer.at/img/hero-home.jpg">
+<meta property="og:type" content="website">
+<meta name="description" content="Schreib uns einfach unverbindlich eine Nachricht und wir melden uns bei Dir!">
+<link rel="icon" href="../img/logo.png">
+<style>
+@font-face{font-family:"Oswald";src:url("../fonts/Oswald.ttf") format("truetype");font-weight:200 700;font-display:swap}
+@font-face{font-family:"Inter";src:url("../fonts/Inter.ttf") format("truetype");font-weight:100 900;font-display:swap}
+
+:root{
+  --bg:#111214; --bg2:#17181b; --card:#1d1f23; --line:rgba(255,255,255,.09);
+  --text:#f1efe9; --muted:#a3a39c;
+  --gold:#d4a843; --gold-dim:#b48a2e; --gold-contrast:#15130c; --cta-bg:rgba(212,168,67,.16); --cta-border:rgba(212,168,67,.48); --cta-hover:rgba(212,168,67,.24);
+  --header:rgba(15,16,18,.94); --menu-bg:#111214; --input:#141518; --footer:#0e0f11;
+  --hero-overlay:linear-gradient(180deg,rgba(17,18,20,.55) 0%,rgba(17,18,20,.15) 35%,rgba(17,18,20,.42) 68%,#111214 100%);
+  --cta-overlay:rgba(17,18,20,.9);
+  --max:1240px; --nav-max:1480px; --r:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--text)}
+a:hover{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+h1,h2,h3{font-family:"Oswald","Arial Narrow",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.03em;line-height:1.08}
+h1{font-size:clamp(2.4rem,5.5vw,4.4rem)}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem)}
+h3{font-size:1.15rem;letter-spacing:.05em}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.lead{color:var(--muted);max-width:68ch}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:50;background:var(--header);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{max-width:var(--nav-max);margin:0 auto;padding:10px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:46px}
+.brand span{font-family:"Oswald",sans-serif;font-weight:500;font-size:clamp(.95rem,1.25vw,1.12rem);letter-spacing:.14em;text-transform:uppercase;opacity:.88}
+.menu{display:flex;align-items:center;gap:4px;list-style:none}
+.menu a{display:block;padding:10px 13px;font-size:.84rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--text)}
+.menu a:hover{color:var(--gold)}
+.menu a[aria-current=page]{color:var(--gold);box-shadow:inset 0 -2px 0 var(--gold)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:1.3rem;padding:7px 12px;border-radius:8px;cursor:pointer}
+@media(max-width:880px){
+  .burger{display:block}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--menu-bg);border-bottom:1px solid var(--gold);padding:10px 24px 18px}
+  .menu.open{display:flex}
+}
+
+/* Buttons – Gold nur für die eine Hauptaktion */
+.btn{display:inline-block;font-weight:600;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 24px;border-radius:var(--r);border:1px solid var(--line);color:var(--text);background:transparent;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s,background .15s}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn-gold{background:var(--cta-bg);border-color:var(--cta-border);color:var(--text);font-weight:700}
+.btn-gold:hover{background:var(--cta-hover);border-color:rgba(212,168,67,.72);color:var(--text)}
+
+/* Hero */
+.hero{position:relative;min-height:74vh;display:flex;align-items:flex-end;isolation:isolate}
+.hero.small{min-height:42vh}
+.hero::before{content:"";position:absolute;inset:0;background:var(--hero) var(--hero-pos, center 28%)/cover no-repeat;z-index:-2;filter:none}
+.hero::after{content:"";position:absolute;inset:0;background:var(--hero-overlay);z-index:-1}
+.hero-in{width:100%;padding:80px 0 56px}
+.hero .tag{font-family:"Oswald",sans-serif;font-weight:500;letter-spacing:.3em;text-transform:uppercase;font-size:.95rem;color:var(--gold)}
+.hero h1{margin:8px 0 16px}
+.hero p.lead{color:#cfcdc6;margin-bottom:26px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Sektionen */
+.sec{padding:clamp(56px,8vw,92px) 0;border-top:1px solid var(--line)}
+.sec.alt{background:var(--bg2)}
+.sec-head{margin-bottom:36px}
+.sec-head h2{margin-bottom:10px}
+.cols{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,60px);align-items:center}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.framed{border-radius:var(--r);border:1px solid var(--line)}
+
+/* Mitglieder */
+.members{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:980px){.members{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.members{grid-template-columns:1fr}}
+.member{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .16s,border-color .16s}
+.member:hover{transform:translateY(-4px);border-color:rgba(212,168,67,.55)}
+.member img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.member .mb{padding:18px 20px 22px}
+.member h3{margin-bottom:2px}
+.role{font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.member p{font-size:.93rem;color:var(--muted)}
+
+/* Termine – aufklappbar */
+.events{display:grid;gap:12px}
+details.ev{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+details.ev[open]{border-color:rgba(212,168,67,.5)}
+details.ev summary{display:grid;grid-template-columns:86px 1fr auto;gap:20px;align-items:center;padding:18px 22px;cursor:pointer;list-style:none}
+details.ev summary::-webkit-details-marker{display:none}
+.ev-date{font-family:"Oswald",sans-serif;line-height:1.05;border-right:1px solid var(--line);padding-right:18px;text-align:center}
+.ev-date .d{font-size:1.9rem;font-weight:600;display:block}
+.ev-date .m{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.ev-title h3{margin-bottom:1px}
+.ev-title .hint{font-size:.82rem;color:var(--muted)}
+.chev{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:0;color:var(--muted);transition:border-color .15s,color .15s;background:rgba(255,255,255,.02)}
+.chev::after{content:"Mehr Infos";font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+details[open] .chev{border-color:rgba(212,168,67,.55);color:var(--gold)}
+details[open] .chev::after{content:"Weniger"}
+.ev-body{padding:0 22px 20px 128px;display:grid;gap:10px}
+@media(max-width:680px){
+  details.ev summary{grid-template-columns:70px 1fr auto;gap:14px}
+  .ev-body{padding-left:22px}
+}
+.ev-body .row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.95rem;color:var(--muted)}
+.ev-body .row b{color:var(--text);font-weight:600}
+.ev-body a{color:var(--gold)}
+details.ev.next summary{box-shadow:inset 3px 0 0 var(--gold)}
+.badge{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,168,67,.5);border-radius:99px;padding:3px 10px;white-space:nowrap}
+details.ev.past{opacity:.5}
+
+/* Galerie / Karten */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.cards3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.card h3{margin-bottom:8px}
+.card p{font-size:.95rem;color:var(--muted)}
+.card .btn{margin-top:16px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.gallery img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:8px;border:1px solid var(--line);transition:transform .18s}
+.gallery a:hover img{transform:scale(1.02)}
+
+/* Formular (optisch – bleibt in Wix euer Formular) */
+form{display:grid;gap:16px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:620px){.frow{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+input,textarea{font:inherit;color:var(--text);background:var(--input);border:1px solid var(--line);border-radius:8px;padding:12px 13px}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:130px;resize:vertical}
+.contact-info{display:grid;gap:12px}
+.ci{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
+.ci .ic{color:var(--gold);font-size:1.2rem;line-height:1.4}
+.ci h3{font-size:.95rem;margin-bottom:1px}
+.ci p, .ci a{font-size:.95rem;color:var(--muted)}
+
+/* CTA-Band */
+.cta{border-top:1px solid var(--line);text-align:center;padding:clamp(60px,9vw,100px) 24px;background:linear-gradient(var(--cta-overlay),var(--cta-overlay)),var(--cta,none) center/cover}
+.cta h2{margin-bottom:10px}
+.cta p{color:var(--muted);max-width:56ch;margin:0 auto 26px}
+
+/* Footer */
+footer{border-top:1px solid var(--line);background:var(--footer);padding:48px 0 24px;font-size:.93rem}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:36px}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr}}
+footer h3{font-size:.85rem;letter-spacing:.18em;color:var(--gold);margin-bottom:12px}
+footer ul{list-style:none;display:grid;gap:7px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--gold)}
+.fbrand p{color:var(--muted);max-width:40ch;margin-top:8px}
+.soc{display:flex;gap:10px;margin-top:14px}
+.soc a{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;font-size:.75rem;font-weight:700;color:var(--muted);text-decoration:none}
+.soc a:hover{border-color:var(--gold);color:var(--gold)}
+.fbottom{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;color:#7c7c76}
+.fbottom a{color:#9b9b94}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}html{scroll-behavior:auto}}
+
+
+/* Mobile-Feinschliff: verhindert abgeschnittene Texte/Bilder und macht Event-Badges handytauglich */
+html,body{max-width:100%;overflow-x:hidden}
+.hero,.cta{overflow:hidden;color:#f1efe9}
+.hero h1,.hero .lead,.hero .tag,.cta h2,.cta p{max-width:100%}
+.hero h1,.cta h2{color:#f1efe9;overflow-wrap:anywhere}
+.cta p{color:#cfcdc6}
+.hero .btn:not(.btn-gold),.cta .btn:not(.btn-gold){color:#f1efe9}
+.ev-title{min-width:0}
+.ev-title h3{overflow-wrap:anywhere}
+@media(max-width:680px){
+  body{font-size:16px}
+  .wrap{padding-left:18px;padding-right:18px}
+  .nav{padding-left:16px;padding-right:16px}
+  .brand img{width:42px}
+  .brand span{font-size:.9rem;letter-spacing:.11em;opacity:.84}
+  .cta-row{gap:10px}
+  .btn{max-width:100%;padding:12px 18px;font-size:.78rem;white-space:normal;text-align:center}
+  details.ev summary{grid-template-columns:62px minmax(0,1fr);gap:12px;padding:16px}
+  .ev-date{padding-right:12px}
+  .ev-date .d{font-size:1.55rem}
+  .ev-date .m{font-size:.66rem;letter-spacing:.11em}
+  .badge,.chev{grid-column:2;justify-self:start;margin-top:5px}
+  .badge{font-size:.58rem;letter-spacing:.1em;padding:3px 8px;white-space:normal;line-height:1.25}
+  .ev-body{padding:0 16px 18px 16px}
+  .ev-body .row{font-size:.92rem}
+  .framed{width:100%;height:auto}
+  .gallery{gap:10px}
+}
+
+
+/* Finaler Mobile-Hero-Fix: Desktop bleibt unverändert, Handy wird gezielt entschärft */
+.hero-content{max-width:760px}
+.lead-mobile{display:none}
+
+
+@media(max-width:480px){
+  .brand{gap:9px}
+  .brand img{width:38px}
+  .brand span{display:inline;font-size:.82rem;letter-spacing:.08em;font-weight:500;opacity:.9;max-width:120px;white-space:nowrap}
+}
+@media(max-width:380px){
+  .brand img{width:38px}
+  .hero h1{font-size:clamp(1.9rem,10vw,2.35rem)}
+  .cta-row{grid-template-columns:1fr}
+}
+
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.soc a svg{width:19px;height:19px;display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.soc a[aria-label="Facebook"] svg{fill:currentColor;stroke:none;width:17px;height:17px}
+.soc a[aria-label="YouTube"] svg rect{fill:none;stroke:currentColor}.soc a[aria-label="YouTube"] svg path{fill:currentColor;stroke:none}
+.social-inline{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}.social-inline a{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none}.social-inline svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}.social-inline a:hover{color:var(--gold)}
+.legal-text{color:var(--muted);display:grid;gap:16px}.legal-text h2{color:var(--text);font-size:1.45rem;margin-top:10px}.legal-text h3{color:var(--gold);margin-top:10px}.legal-text ul{padding-left:22px;display:grid;gap:6px}.legal-text a{color:var(--text)}.legal-text a:hover{color:var(--gold)}
+
+
+
+/* Bildplatzierung – Feinschliff nach Wix-Zuschnitt
+   Orientierung: Die alten Wix-Bilder waren als zentrierte 16:7/3:2-Crops eingebunden.
+   Deshalb werden Inhaltsbilder nicht mehr künstlich hochgezogen; Galerien und Heroes
+   bleiben zentriert und ruhig. */
+.hero{overflow:hidden}
+.hero::before{
+  background-position:var(--hero-pos, center 28%);
+  background-size:cover;
+  transform:none;
+  transform-origin:center;
+}
+.hero.hero-home{--hero-pos:center 28%; --hero-mobile-pos:center 28%}
+.hero.small{--hero-pos:center 28%; --hero-mobile-pos:center 28%}
+
+.cols img.framed{
+  width:100%;
+  height:auto;
+  min-height:0;
+  max-height:none;
+  object-fit:contain;
+  object-position:center center;
+}
+.member img{
+  object-position:var(--member-pos, center center);
+}
+.gallery img{
+  aspect-ratio:3/2;
+  object-position:center center;
+}
+
+@media(max-width:860px){
+  .cols img.framed{
+    aspect-ratio:auto;
+    object-fit:contain;
+    object-position:center center;
+  }
+}
+
+
+
+
+
+
+
+/* Mobile-Hero-Bilder: eigene schmalere Zuschnitte, damit die Fotos am Handy nicht zu breit/flach wirken */
+
+
+
+.hero-in{text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.ev-body .row b{color:var(--text)}
+body{overflow-x:hidden}
+
+
+/* ─── Mobile (konsolidiert – ersetzt die früheren Einzel-Blöcke) ─── */
+html{overflow-x:clip}
+body{overflow-x:clip}
+.hero.small::after{background:linear-gradient(180deg,rgba(17,18,20,.35) 0%,rgba(17,18,20,.12) 26%,rgba(17,18,20,.62) 62%,#111214 94%)}
+@media(max-width:680px){
+  .lead-desktop{display:none!important}
+  .lead-mobile{display:block!important}
+  .hero::before{
+    background-image:var(--hero-mobile, var(--hero));
+    background-position:var(--hero-mobile-pos, center 35%);
+    background-size:cover;
+    background-repeat:no-repeat;
+  }
+  .hero{min-height:min(78svh,640px)}
+  .hero .hero-in{padding:44svh 20px 36px;margin:0;width:100%;box-sizing:border-box}
+  .hero.small{min-height:min(44svh,400px)}
+  .hero.small .hero-in{padding:21svh 20px 32px}
+  .hero::after{background:linear-gradient(180deg,rgba(17,18,20,.30) 0%,rgba(17,18,20,.06) 30%,rgba(17,18,20,.55) 70%,#111214 100%)}
+  .hero.small::after{background:linear-gradient(180deg,rgba(17,18,20,.32) 0%,rgba(17,18,20,.10) 28%,rgba(17,18,20,.6) 64%,#111214 96%)}
+  .hero .tag{font-size:.72rem;letter-spacing:.18em}
+  .hero h1{font-size:clamp(2rem,11vw,2.8rem);overflow-wrap:break-word;max-width:100%}
+  .hero p.lead{font-size:1rem;max-width:34ch}
+  .cta-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+  .cta-row .btn{display:flex;align-items:center;justify-content:center;min-height:50px;padding:11px 12px;font-size:.76rem;letter-spacing:.05em}
+  .member img{object-position:var(--member-mobile-pos, center 25%)}
+  .cta{background-image:linear-gradient(rgba(17,18,20,.86),rgba(17,18,20,.94)),var(--cta-mobile,var(--cta,none));background-size:cover;background-position:center}
+}
+
+
+.gallery a:first-child{grid-column:span 2;grid-row:span 2}
+.gallery a:first-child img{height:100%;aspect-ratio:auto}
+.gallery a{display:block}
+.gallery img{height:100%}
+.insta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.insta img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;border:1px solid var(--line);transition:transform .18s}
+.insta a:hover img{transform:scale(1.03)}
+@media(max-width:680px){.insta{gap:8px}}
+
+@media(min-width:861px){
+  .gallery a:first-child{grid-column:span 2;grid-row:span 2}
+  .gallery a:first-child img{height:100%;aspect-ratio:auto}
+}
+
+.insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 26px}
+.insta-grid img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;border:1px solid var(--line);transition:transform .18s}
+.insta-grid a:hover img{transform:scale(1.03)}
+.insta-handle{color:var(--gold);font-weight:600;text-decoration:none}
+details.ev.next .hint::before{content:"Nächster Auftritt · ";color:var(--gold);font-weight:600}
+.ev.next .ev-date .d{color:var(--gold)}
+.next-label{color:var(--gold);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* Galerie: gemischte Kachelgrößen */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:175px;grid-auto-flow:dense;gap:14px}
+.gallery a{display:block;overflow:hidden;border-radius:8px}
+.gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:auto;border-radius:8px;border:1px solid var(--line)}
+.gallery a.big{grid-column:span 2;grid-row:span 2}
+.gallery a.tall{grid-row:span 2}
+@media(max-width:860px){
+  .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px;gap:10px}
+}
+
+/* ─── Feinschliff 2026-06: getrennte Desktop-/Handy-Bildwirkung ─── */
+.hero::before{
+  background-size:var(--hero-size, cover) !important;
+}
+@media(max-width:680px){
+  .hero::before{
+    background-size:var(--hero-mobile-size, cover) !important;
+    background-repeat:var(--hero-mobile-repeat, no-repeat) !important;
+  }
+  .hero.hero-home{
+    min-height:min(72svh,620px);
+  }
+  .hero.hero-home .hero-in{
+    padding-top:42svh;
+  }
+}
+
+/* Presse-Galerie: Desktop 3×3, Handy/Tablet 2×4 statt einzelnes letztes Bild */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  align-items:stretch;
+}
+.gallery a,
+.gallery a.big,
+.gallery a.tall,
+.gallery a:first-child{
+  grid-column:auto !important;
+  grid-row:auto !important;
+  display:block;
+}
+.gallery img,
+.gallery a:first-child img{
+  width:100%;
+  height:100%;
+  aspect-ratio:3/2 !important;
+  object-fit:cover;
+  object-position:center center;
+}
+@media(max-width:860px){
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+  .gallery a:nth-child(n+9){
+    display:none;
+  }
+}
+
+/* Kontakt: Formular großflächig, Kontaktdaten darunter */
+.contact-layout{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:30px !important;
+  align-items:start;
+}
+.contact-layout form{
+  width:100%;
+  max-width:none;
+}
+.contact-layout textarea{
+  min-height:190px;
+}
+.contact-layout .contact-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.contact-hero{
+  min-height:52vh;
+}
+@media(max-width:760px){
+  .contact-layout .contact-info{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:680px){
+  .contact-hero{
+    min-height:min(34svh,320px) !important;
+  }
+  .contact-hero .hero-in{
+    padding:15svh 20px 30px !important;
+  }
+  .contact-layout textarea{
+    min-height:150px;
+  }
+}
+
+/* CTA ohne zweiten Button sauber zentrieren */
+.cta .cta-row .btn:only-child{
+  max-width:260px;
+  margin-inline:auto;
+}
+
+/* Mitglieder-Reihenfolge bleibt im HTML; mobile Darstellung bleibt einspaltig */
+
+
+/* === FINAL MOBILE FEINSCHLIFF === */
+
+/* Hero: mobile weniger Zoom, bessere Lesbarkeit, keine abgeschnittenen Buttons */
+@media(max-width:680px){
+  .hero{
+    min-height:68svh;
+    overflow:hidden;
+  }
+  .hero.small{
+    min-height:42svh;
+  }
+  .hero::before{
+    background-image:var(--hero-mobile, var(--hero)) !important;
+    background-position:var(--hero-mobile-pos, center center) !important;
+    background-size:cover !important;
+  }
+  .hero-in{
+    padding:clamp(95px,20vh,150px) 0 36px !important;
+  }
+  .hero h1{
+    font-size:clamp(2.55rem,13vw,3.75rem) !important;
+    line-height:.96 !important;
+    letter-spacing:.018em !important;
+    max-width:100%;
+    overflow-wrap:normal;
+  }
+  .hero .tag{
+    font-size:.72rem !important;
+    letter-spacing:.18em !important;
+  }
+  .hero p.lead{
+    font-size:1rem !important;
+    line-height:1.52 !important;
+    max-width:31ch !important;
+    margin-bottom:22px !important;
+  }
+  .cta-row{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+    width:100% !important;
+  }
+  .cta-row .btn{
+    width:100% !important;
+    text-align:center !important;
+    padding:12px 10px !important;
+    font-size:.76rem !important;
+    letter-spacing:.06em !important;
+    white-space:nowrap !important;
+  }
+}
+@media(max-width:390px){
+  .cta-row .btn{
+    font-size:.7rem !important;
+    padding:11px 7px !important;
+    letter-spacing:.045em !important;
+  }
+}
+
+/* Auf Seiten-Heros am Handy nicht zu stark beschneiden */
+@media(max-width:680px){
+  .hero.small::before{
+    background-size:cover !important;
+    background-position:var(--hero-mobile-pos, center center) !important;
+  }
+}
+
+/* Kontakt: Formular volle Breite, Kontaktdaten darunter */
+.contact-layout,
+.contact-grid,
+.kontakt-grid{
+  display:grid;
+  grid-template-columns:1fr !important;
+  gap:28px !important;
+}
+.contact-form,
+.form-card,
+form{
+  width:100% !important;
+  max-width:none !important;
+}
+.contact-info{
+  width:100% !important;
+  max-width:none !important;
+}
+@media(min-width:900px){
+  .contact-layout,
+  .contact-grid,
+  .kontakt-grid{
+    grid-template-columns:1fr !important;
+  }
+  form{
+    max-width:none !important;
+  }
+  .frow{
+    grid-template-columns:1fr 1fr !important;
+  }
+}
+
+/* Presse-Galerie: sauberes Rechteck, kein einzelnes letztes Bild */
+.gallery{
+  grid-template-columns:repeat(3,1fr) !important;
+}
+.gallery a:nth-child(n+10),
+.gallery img:nth-child(n+10){
+  display:none !important;
+}
+@media(max-width:760px){
+  .gallery{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+  .gallery a:nth-child(n+9),
+  .gallery img:nth-child(n+9){
+    display:none !important;
+  }
+}
+.gallery img{
+  aspect-ratio:3/2 !important;
+  object-fit:cover !important;
+}
+
+/* Mitglieder-Reihenfolge: Tobias, Patricia, Bernhard */
+.members .member[data-member="tobias"],
+.members .member.member-tobias{order:1!important}
+.members .member[data-member="patricia"],
+.members .member.member-patricia{order:2!important}
+.members .member[data-member="bernhard"],
+.members .member.member-bernhard{order:3!important}
+
+
+/* === RESPONSIVE FINALFIX: Mobile-Bilder & Mitglieder === */
+
+/* Desktop bleibt wie bestehend; ab Tablet/Handy werden Hero-Bilder weniger brutal gecroppt. */
+@media(max-width:760px){
+  .hero{
+    min-height:68svh;
+    overflow:hidden;
+  }
+  .hero.small{
+    min-height:44svh;
+  }
+  .hero::before{
+    background-image:var(--hero-mobile, var(--hero)) !important;
+    background-position:var(--hero-mobile-pos, center center) !important;
+    background-size:var(--hero-mobile-size, contain) !important;
+    background-repeat:no-repeat !important;
+    background-color:#111214 !important;
+  }
+  .hero::after{
+    background:linear-gradient(180deg,rgba(17,18,20,.18) 0%,rgba(17,18,20,.08) 36%,rgba(17,18,20,.48) 68%,#111214 100%) !important;
+  }
+  .hero-in{
+    padding:clamp(110px,22vh,170px) 0 34px !important;
+  }
+  .hero h1{
+    font-size:clamp(2.45rem,12vw,3.55rem) !important;
+    line-height:.96 !important;
+    letter-spacing:.015em !important;
+    max-width:100%;
+  }
+  .hero.small h1{
+    font-size:clamp(2.35rem,11vw,3.25rem) !important;
+  }
+  .hero p.lead{
+    font-size:.98rem !important;
+    line-height:1.5 !important;
+    max-width:32ch !important;
+  }
+  .cta-row{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+  }
+  .cta-row .btn{
+    width:100% !important;
+    min-width:0 !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    padding:12px 8px !important;
+    font-size:.72rem !important;
+    letter-spacing:.055em !important;
+  }
+}
+@media(max-width:380px){
+  .cta-row .btn{
+    font-size:.66rem !important;
+    padding:11px 6px !important;
+  }
+}
+
+/* Mitglieder-Seite: fixes Raster und fixe Reihenfolge */
+.members{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+.member.member-tobias{order:1!important}
+.member.member-patricia{order:2!important}
+.member.member-bernhard{order:3!important}
+.member.member-michael-auer{order:4!important}
+.member.member-daniel{order:5!important}
+.member.member-dominik{order:6!important}
+.member.member-thomas{order:7!important}
+.member.member-michael-helmberger{order:8!important}
+.member.member-ralf{order:9!important}
+
+@media(max-width:980px){
+  .members{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:620px){
+  .members{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* Mitgliederbilder mobil nicht zusätzlich verreißen */
+.member img{
+  object-position:center center;
+}
+
+
+
+
+/* === HANDY HERO WIE ÜBER UNS: Hero bleibt Hero, aber ruhiger zugeschnitten === */
+@media(max-width:760px){
+  .hero{
+    min-height:68svh !important;
+    display:flex !important;
+    align-items:flex-end !important;
+    overflow:hidden !important;
+  }
+
+  .hero.small{
+    min-height:44svh !important;
+  }
+
+  .hero::before{
+    background-image:var(--hero-mobile, var(--hero)) !important;
+    background-size:cover !important;
+    background-position:var(--hero-mobile-pos, center center) !important;
+    background-repeat:no-repeat !important;
+  }
+
+  .hero::after{
+    background:linear-gradient(180deg,rgba(17,18,20,.34) 0%,rgba(17,18,20,.10) 35%,rgba(17,18,20,.52) 70%,#111214 100%) !important;
+  }
+
+  .hero-in{
+    padding:clamp(90px,18vh,138px) 0 36px !important;
+  }
+
+  .hero .tag{
+    font-size:.72rem !important;
+    letter-spacing:.18em !important;
+  }
+
+  .hero h1{
+    font-size:clamp(2.35rem,11.5vw,3.45rem) !important;
+    line-height:.96 !important;
+    letter-spacing:.015em !important;
+    max-width:100% !important;
+  }
+
+  .hero.small h1{
+    font-size:clamp(2.18rem,10.5vw,3.1rem) !important;
+  }
+
+  .hero p.lead{
+    font-size:1rem !important;
+    line-height:1.5 !important;
+    max-width:33ch !important;
+    margin-bottom:22px !important;
+  }
+
+  .cta-row{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+  }
+
+  .cta-row .btn{
+    width:100% !important;
+    min-width:0 !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    padding:12px 8px !important;
+    font-size:.72rem !important;
+    letter-spacing:.055em !important;
+  }
+}
+
+@media(max-width:380px){
+  .cta-row .btn{
+    font-size:.66rem !important;
+    padding:11px 6px !important;
+  }
+}
+
+
+/* === FINALER TEST: Handy-Hero wie Über uns ===
+   Keine separaten Mobile-Hero-Bilder mehr.
+   Mobile nutzt dasselbe Bild wie Desktop, aber mit geringerer Hero-Höhe.
+*/
+@media(max-width:760px){
+  .hero::before{
+    background-image:var(--hero) !important;
+    background-size:cover !important;
+    background-position:var(--hero-mobile-pos, var(--hero-pos, center center)) !important;
+    background-repeat:no-repeat !important;
+  }
+
+  .hero{
+    min-height:54svh !important;
+    display:flex !important;
+    align-items:flex-end !important;
+    overflow:hidden !important;
+  }
+
+  .hero.hero-home{
+    min-height:58svh !important;
+  }
+
+  .hero.small{
+    min-height:44svh !important;
+  }
+
+  .hero::after{
+    background:linear-gradient(180deg,rgba(17,18,20,.46) 0%,rgba(17,18,20,.14) 35%,rgba(17,18,20,.56) 72%,#111214 100%) !important;
+  }
+
+  .hero-in{
+    padding:clamp(82px,16vh,124px) 0 34px !important;
+  }
+
+  .hero .tag{
+    font-size:.72rem !important;
+    letter-spacing:.18em !important;
+  }
+
+  .hero h1{
+    font-size:clamp(2.35rem,11.5vw,3.45rem) !important;
+    line-height:.96 !important;
+    letter-spacing:.015em !important;
+    max-width:100% !important;
+  }
+
+  .hero.small h1{
+    font-size:clamp(2.18rem,10.5vw,3.1rem) !important;
+  }
+
+  .hero p.lead{
+    font-size:1rem !important;
+    line-height:1.5 !important;
+    max-width:33ch !important;
+    margin-bottom:22px !important;
+  }
+
+  .cta-row{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+  }
+
+  .cta-row .btn{
+    width:100% !important;
+    min-width:0 !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    padding:12px 8px !important;
+    font-size:.72rem !important;
+    letter-spacing:.055em !important;
+  }
+}
+@media(max-width:380px){
+  .cta-row .btn{
+    font-size:.66rem !important;
+    padding:11px 6px !important;
+  }
+}
+
+
+
+/* === FEINJUSTIERUNG HERO: Überschrift etwas tiefer === */
+.hero .hero-in{
+  padding-bottom:44px !important;
+}
+.hero.small .hero-in{
+  padding-bottom:30px !important;
+}
+@media(max-width:760px){
+  .hero:not(.hero-home) .hero-in{
+    padding-bottom:24px !important;
+  }
+  .hero.small .hero-in{
+    padding-bottom:22px !important;
+  }
+}
+
+
+/* === BUTTON FEINSCHLIFF === */
+.btn{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  line-height:1.25 !important;
+  gap:.35em;
+}
+.card .btn,
+.cards3 .btn{
+  width:fit-content;
+  max-width:100%;
+  white-space:normal !important;
+}
+@media(max-width:760px){
+  .card .btn,
+  .cards3 .btn{
+    width:100% !important;
+    max-width:100% !important;
+    min-height:54px;
+    padding-left:12px !important;
+    padding-right:12px !important;
+  }
+  .cards3 .card{
+    overflow:hidden;
+  }
+}
+
+
+/* === CTA Button Zentrierung === */
+.cta{
+  text-align:center;
+}
+.cta .btn{
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+@media(max-width:760px){
+  .cta .btn{
+    display:inline-flex !important;
+    width:min(100%, 280px) !important;
+  }
+}
+
+
+/* === HOME BUTTONS + KONTAKT ICONS FEINSCHLIFF === */
+
+/* Home-Hero: erster Button gold, zweiter ruhiger Outline */
+.hero.hero-home .cta-row .btn:not(.btn-gold){
+  background:rgba(17,18,20,.36) !important;
+  border-color:rgba(212,168,67,.58) !important;
+  color:#f1efe9 !important;
+}
+
+/* Handy: Hero-Buttons nicht am linken/rechten Rand kleben lassen */
+@media(max-width:760px){
+  .hero.hero-home .cta-row{
+    width:calc(100% - 40px) !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    gap:12px !important;
+  }
+
+  .hero.hero-home .cta-row .btn{
+    min-width:0 !important;
+    justify-content:center !important;
+    text-align:center !important;
+  }
+}
+
+/* Home-CTA unten: Kontakt-Button wirklich zentriert */
+.cta{
+  text-align:center !important;
+}
+.cta .btn{
+  margin-left:auto !important;
+  margin-right:auto !important;
+  justify-content:center !important;
+}
+@media(max-width:760px){
+  .cta .btn{
+    display:flex !important;
+    width:min(280px, calc(100% - 40px)) !important;
+  }
+}
+
+/* Kontaktseite: Emoji-Icons neutral/schwarzweiß */
+.contact-card .ico,
+.contact-card .icon,
+.info-card .ico,
+.info-card .icon,
+.contact-info .ico,
+.contact-info .icon{
+  filter:grayscale(1) saturate(0) !important;
+  opacity:.82 !important;
+}
+
+/* Fallback, falls Icons einfache Emoji-Spans ohne eigene Klasse sind */
+.kontakt-card span:first-child,
+.contact-card > span:first-child,
+.info-card > span:first-child{
+  filter:grayscale(1) saturate(0) !important;
+}
+
+
+/* === FINALER CTA-KONTAKT-BUTTON FIX === */
+.cta{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  text-align:center !important;
+}
+
+.cta > .btn,
+.cta a.btn{
+  align-self:center !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  display:inline-flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  text-align:center !important;
+}
+
+@media(max-width:760px){
+  .cta > .btn,
+  .cta a.btn{
+    width:280px !important;
+    max-width:calc(100vw - 64px) !important;
+    min-width:0 !important;
+  }
+}
+
+
+/* === CTA-KONTAKT-BUTTON: normale mittige Breite === */
+.cta{
+  text-align:center !important;
+}
+
+.cta > a.btn,
+.cta a.btn{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:auto !important;
+  min-width:220px !important;
+  max-width:280px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  padding-left:34px !important;
+  padding-right:34px !important;
+}
+
+@media(max-width:760px){
+  .cta > a.btn,
+  .cta a.btn{
+    width:auto !important;
+    min-width:220px !important;
+    max-width:260px !important;
+  }
+}
+
+
+/* === FINAL: CTA-Kontaktbutton wirklich mittig === */
+.cta{
+  text-align:center !important;
+}
+.cta-button-wrap{
+  width:100% !important;
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  margin:26px auto 0 !important;
+  text-align:center !important;
+}
+.cta-button-wrap .btn{
+  display:inline-flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  width:auto !important;
+  min-width:220px !important;
+  max-width:280px !important;
+  margin:0 auto !important;
+  text-align:center !important;
+}
+@media(max-width:760px){
+  .cta-button-wrap .btn{
+    min-width:220px !important;
+    max-width:260px !important;
+  }
+}
+
+
+/* === HOME HERO BUTTON FEEDBACK + DESKTOP HERO FEINSCHLIFF === */
+
+/* Feedback nur für die zwei obersten Home-Hero-Buttons */
+.hero.hero-home .cta-row .btn{
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease,
+    background-color .18s ease,
+    color .18s ease !important;
+}
+
+.hero.hero-home .cta-row .btn:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.28) !important;
+}
+
+.hero.hero-home .cta-row .btn:active{
+  transform:translateY(0) scale(.98) !important;
+  box-shadow:0 6px 16px rgba(0,0,0,.22) !important;
+}
+
+.hero.hero-home .cta-row .btn.btn-gold:hover{
+  background:#e0b84e !important;
+  border-color:#e0b84e !important;
+  color:#111214 !important;
+}
+
+.hero.hero-home .cta-row .btn:not(.btn-gold):hover{
+  background:rgba(212,168,67,.13) !important;
+  border-color:rgba(212,168,67,.9) !important;
+  color:#fff !important;
+}
+
+/* Nur Desktop/Laptop: Unterseiten-Heros etwas größer/einheitlicher.
+   Handy bleibt unverändert. Home bleibt unverändert. */
+@media(min-width:761px){
+  .hero.small{
+    min-height:56vh !important;
+  }
+
+  .hero.small .hero-in{
+    padding-bottom:54px !important;
+  }
+}
+
+
+/* === PRESSE & KONTAKT: Desktop-Hero wieder kompakter === */
+/* Nur Desktop/Laptop, Handy bleibt unverändert. */
+@media(min-width:761px){
+  body.page-presse .hero.small,
+  body.page-kontakt .hero.small{
+    min-height:46vh !important;
+  }
+
+  body.page-presse .hero.small .hero-in,
+  body.page-kontakt .hero.small .hero-in{
+    padding-bottom:30px !important;
+  }
+}
+
+
+/* === KONTAKT: Formular-Feinschliff === */
+form button[type="submit"],
+.contact-form button[type="submit"],
+#anfrage button[type="submit"]{
+  min-height:62px !important;
+  padding:0 42px !important;
+  font-size:1rem !important;
+  letter-spacing:.1em !important;
+  border-radius:var(--r) !important;
+}
+
+/* Kontakt-Icons auch am Handy golden */
+@media(max-width:760px){
+  .contact-info svg,
+  .contact-info .icon svg,
+  .contact-card svg,
+  .contact-card .icon svg,
+  .kontakt-info svg,
+  .kontakt-info .icon svg{
+    color:var(--gold) !important;
+    fill:currentColor !important;
+    stroke:currentColor !important;
+  }
+
+  .contact-info .icon,
+  .contact-card .icon,
+  .kontakt-info .icon{
+    color:var(--gold) !important;
+  }
+}
+
+
+/* === KONTAKT: nur Email- und Telefon-Icons gold, Social Icons zurück === */
+@media(max-width:760px){
+  /* Social-Media-Icons wieder neutral/weiß */
+  .soc svg,
+  .social svg,
+  .socials svg,
+  footer svg{
+    color:currentColor !important;
+    fill:currentColor !important;
+    stroke:currentColor !important;
+  }
+
+  /* Nur direkte Kontaktinfos: Email + Telefon gold */
+  a[href^="mailto:"] svg,
+  a[href^="tel:"] svg,
+  .contact-info a[href^="mailto:"] svg,
+  .contact-info a[href^="tel:"] svg,
+  .contact-card a[href^="mailto:"] svg,
+  .contact-card a[href^="tel:"] svg,
+  .kontakt-info a[href^="mailto:"] svg,
+  .kontakt-info a[href^="tel:"] svg{
+    color:var(--gold) !important;
+    fill:currentColor !important;
+    stroke:currentColor !important;
+  }
+
+  a[href^="mailto:"] .icon,
+  a[href^="tel:"] .icon,
+  .contact-info a[href^="mailto:"] .icon,
+  .contact-info a[href^="tel:"] .icon,
+  .contact-card a[href^="mailto:"] .icon,
+  .contact-card a[href^="tel:"] .icon,
+  .kontakt-info a[href^="mailto:"] .icon,
+  .kontakt-info a[href^="tel:"] .icon{
+    color:var(--gold) !important;
+  }
+}
+
+
+
+/* === KONTAKT: Social-Icons wieder neutral/weiß, Mail/Telefon wie gewünscht === */
+.contact-info .ci:nth-child(1) .ic,
+.contact-info .ci:nth-child(2) .ic{
+  color:var(--gold) !important;
+}
+
+.social-inline a,
+.social-inline a span{
+  color:var(--muted) !important;
+}
+.social-inline svg{
+  color:currentColor !important;
+  stroke:currentColor !important;
+  fill:none !important;
+}
+.social-inline a[href*="facebook"] svg{
+  fill:currentColor !important;
+  stroke:none !important;
+}
+.social-inline a[href*="youtube"] svg rect{
+  fill:none !important;
+  stroke:currentColor !important;
+}
+.social-inline a[href*="youtube"] svg path{
+  fill:currentColor !important;
+  stroke:none !important;
+}
+.social-inline a:hover,
+.social-inline a:hover span{
+  color:var(--gold) !important;
+}
+
+
+.hinweis{position:fixed;left:12px;right:12px;bottom:12px;z-index:200;background:#1d1f23;border:1px solid rgba(212,168,67,.5);border-radius:10px;padding:14px 16px;display:none;gap:12px;align-items:center;flex-wrap:wrap;font-size:.88rem;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.hinweis p{margin:0;flex:1 1 260px}
+.hinweis .btn{padding:9px 18px;font-size:.78rem}
+@media(min-width:861px){.hinweis{left:auto;max-width:520px}}
+
+/* ─── Finaler Mobil-Feinschliff ─── */
+@media(max-width:680px){
+  .sec .btn{display:block;width:100%;text-align:center}
+}
+
+/* === FOOTER: Social-Icons sauber anzeigen === */
+footer .soc a{
+  color:var(--muted) !important;
+}
+
+footer .soc a:hover{
+  color:var(--gold) !important;
+  border-color:var(--gold) !important;
+}
+
+footer .soc a[aria-label="Instagram"] svg,
+footer .soc a[aria-label="Instagram"] svg *{
+  fill:none !important;
+  stroke:currentColor !important;
+  stroke-width:1.8 !important;
+  stroke-linecap:round !important;
+  stroke-linejoin:round !important;
+}
+
+footer .soc a[aria-label="Facebook"] svg,
+footer .soc a[aria-label="Facebook"] svg *{
+  fill:currentColor !important;
+  stroke:none !important;
+}
+
+footer .soc a[aria-label="YouTube"] svg rect{
+  fill:none !important;
+  stroke:currentColor !important;
+  stroke-width:1.8 !important;
+}
+
+footer .soc a[aria-label="YouTube"] svg path{
+  fill:currentColor !important;
+  stroke:none !important;
+}
+
+
+/* === FOOTER ICONS FINAL FIX === */
+footer .soc a{
+  color:var(--muted) !important;
+  border-color:var(--line) !important;
+}
+footer .soc a:hover{
+  color:var(--gold) !important;
+  border-color:var(--gold) !important;
+}
+footer .soc a svg{
+  width:18px !important;
+  height:18px !important;
+  display:block !important;
+  fill:currentColor !important;
+  stroke:none !important;
+}
+footer .soc a[aria-label="Instagram"] svg,
+footer .soc a[aria-label="Instagram"] svg *,
+footer .soc a[aria-label="Facebook"] svg,
+footer .soc a[aria-label="Facebook"] svg *,
+footer .soc a[aria-label="YouTube"] svg,
+footer .soc a[aria-label="YouTube"] svg *{
+  fill:currentColor !important;
+  stroke:none !important;
+}
+
+
+/* ─── Mobil: Hero-Buttons – ein klarer Haupt-Button, Events als dezenter Link ─── */
+@media(max-width:680px){
+  .hero .cta-row{display:grid;grid-template-columns:1fr;gap:6px;justify-items:stretch}
+  .hero .cta-row .btn-gold{width:100%;text-align:center;padding:15px 18px}
+  .hero .cta-row .btn:not(.btn-gold){background:none;border:none;width:auto;justify-self:center;padding:10px 14px;font-size:.78rem;letter-spacing:.1em;color:#e6e3da;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--gold)}
+  .hero .cta-row .btn:not(.btn-gold)::after{content:" →"}
+}
+</style>
+</head>
+<body class="page-kontakt">
+
+<header class="hdr">
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a class="brand" href="../">
+      <img src="../img/logo.png" alt="Brassdorfer Logo">
+      <span>Brassdorfer</span>
+    </a>
+    <button class="burger" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul class="menu" id="menu">
+      <li><a href="../">Home</a></li>
+      <li><a href="../ueber-uns/">Über uns</a></li>
+      <li><a href="../events/">Events</a></li>
+      <li><a href="../presse/">Presse</a></li>
+      <li><a href="./" aria-current="page">Kontakt</a></li>
+      <li style="margin-left:6px"><a class="btn btn-gold" href="#anfrage">Anfragen</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero small contact-hero" style="--hero: url('../img/hero-kontakt.jpg'); --hero-size:100% auto; --hero-mobile:url('../img/hero-kontakt-mobile.jpg'); --hero-pos:center 58%; --hero-mobile-pos:center center">
+    <div class="wrap hero-in">
+      <p class="tag">… des brasst!</p>
+      <h1>Kontakt</h1>
+    </div>
+  </section>
+
+  <section class="sec" id="anfrage">
+    <div class="wrap contact-layout">
+      <div class="reveal">
+        <h2>Schreibt uns</h2>
+        <p class="lead">Interesse geweckt? Schreib uns einfach, wir melden uns bei dir!</p>
+
+        <!-- FORMULAR (FormSubmit): sendet Website-Anfragen an Bernhard.
+             Wichtig: Beim ersten Test-Versand muss die Zieladresse einmal bestätigt werden. -->
+        <form style="margin-top:26px" action="https://formsubmit.co/brassdorfer@gmx.at" method="POST">
+                    <input type="hidden" name="_subject" value="Neue Anfrage über brassdorfer.at">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://www.brassdorfer.at/danke/">
+          <input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_blacklist" value="bitcoin, crypto, casino, spam">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="frow">
+            <label>Vorname<input type="text" name="vorname" autocomplete="given-name"></label>
+            <label>Nachname *<input type="text" name="nachname" autocomplete="family-name" required></label>
+          </div>
+          <div class="frow">
+            <label>Email *<input type="email" name="email" autocomplete="email" required></label>
+            <label>Telefonnummer *<input type="tel" name="tel" autocomplete="tel" required></label>
+          </div>
+          <div class="frow">
+            <label>Dauer der Spielzeit<input type="text" name="dauer" placeholder="z. B. 2 Stunden"></label>
+            <label>Stadt<input type="text" name="stadt"></label>
+          </div>
+          <div class="frow">
+            <label>Straße und Hausnummer<input type="text" name="strasse"></label>
+          </div>
+          <label>Nachricht *<textarea name="nachricht" required></textarea></label>
+          <div><button class="btn btn-gold" type="submit">Senden</button></div>
+        </form>
+        <div id="form-error" style="display:none;margin-top:14px;padding:14px 16px;border:1px solid #a2362e;border-radius:8px;background:rgba(162,54,46,.12);font-size:.95rem">
+          Hoppla – das Senden hat gerade nicht geklappt. Bitte versuch es gleich nochmal oder schreib uns direkt:
+          <a id="form-mailto" href="mailto:brassdorfer@gmx.at">brassdorfer@gmx.at</a>
+        </div>
+      </div>
+
+      <div class="contact-info reveal">
+        <div class="ci"><span class="ic">&#9993;&#65038;</span><div><h3>E-Mail-Adresse</h3><p><a href="mailto:brassdorfer@gmx.at">brassdorfer@gmx.at</a></p></div></div>
+        <div class="ci"><span class="ic">&#9742;&#65038;</span><div><h3>Telefonnummer</h3><p><a href="tel:+436643804114">+43 664 3804114</a></p></div></div>
+        <div class="ci"><span class="ic">♫</span><div><h3>Social Media</h3><div class="social-inline">
+            <a href="https://www.instagram.com/brass_dorfer/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17" cy="7" r="1"></circle></svg><span>Instagram</span></a>
+            <a href="https://www.facebook.com/brassdorfer/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.6.4-1 1-1z"></path></svg><span>Facebook</span></a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="12" rx="4"></rect><path d="M10 9.5v5l5-2.5z"></path></svg><span>YouTube</span></a>
+          </div></div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a class="brand" href="../">
+          <img src="../img/logo.png" alt="">
+          <span>Brassdorfer</span>
+        </a>
+        <p>Wir verbinden traditionelle Blasmusik mit modernen Brass-Grooves und einzigartigen Arrangements.</p>
+        <div class="soc">
+          <a href="https://www.instagram.com/brass_dorfer/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 5.17A2.83 2.83 0 1 0 8 10.83 2.83 2.83 0 0 0 8 5.17zm0 4.66A1.83 1.83 0 1 1 8 6.17a1.83 1.83 0 0 1 0 3.66z"></path><path d="M12.94 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path><path d="M4.5 1A3.5 3.5 0 0 0 1 4.5v7A3.5 3.5 0 0 0 4.5 15h7a3.5 3.5 0 0 0 3.5-3.5v-7A3.5 3.5 0 0 0 11.5 1h-7zm7 1A2.5 2.5 0 0 1 14 4.5v7a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 11.5v-7A2.5 2.5 0 0 1 4.5 2h7z"></path></svg><span class="sr-only">Instagram</span></a>
+          <a href="https://www.facebook.com/brassdorfer/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8.94 6.5V5.44c0-.39.25-.48.43-.48h1.1V3.07L8.95 3c-1.67 0-2.05 1.25-2.05 2.05V6.5H5.5V8.6h1.4V13h2.04V8.6h1.38l.21-2.1H8.94z"></path></svg><span class="sr-only">Facebook</span></a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8.051 1.999h-.102C6.347 1.99 4.654 1.99 2.98 2.09a1.99 1.99 0 0 0-1.87 1.5A12.6 12.6 0 0 0 .6 8c0 1.487.19 2.95.51 4.41a1.99 1.99 0 0 0 1.87 1.5c1.674.1 3.367.1 4.97.091h.102c1.603.009 3.296.009 4.97-.091a1.99 1.99 0 0 0 1.87-1.5c.32-1.46.51-2.923.51-4.41 0-1.487-.19-2.95-.51-4.41a1.99 1.99 0 0 0-1.87-1.5C11.347 1.99 9.654 1.99 8.051 1.999zM6.5 5.5 10.5 8l-4 2.5v-5z"></path></svg><span class="sr-only">YouTube</span></a>
+        </div>
+      </div>
+      <div>
+        <h3>Seiten</h3>
+        <ul>
+          <li><a href="../ueber-uns/">Über uns</a></li>
+          <li><a href="../events/">Events</a></li>
+          <li><a href="../presse/">Presse</a></li>
+          <li><a href="../kontakt/">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li><a href="mailto:brassdorfer@gmx.at">brassdorfer@gmx.at</a></li>
+          <li><a href="tel:+436643804114">+43 664 3804114</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Brassdorfer</span>
+      <span><a href="../impressum/">Impressum</a> · <a href="../datenschutz/">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+var b=document.querySelector('.burger'),m=document.querySelector('.menu');
+if(b){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)})}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+
+
+<script>
+/* Robustes Formular: sendet per Skript an FormSubmit; bei Fehler erscheint eine
+   Meldung mit Mail-Fallback. Ohne JavaScript greift weiter der normale Versand. */
+(function(){
+  var form = document.querySelector('form[action*="formsubmit"]');
+  if(!form || !window.fetch) return;
+  form.addEventListener('submit', function(ev){
+    if(!form.checkValidity()) return; // Browser zeigt Pflichtfeld-Hinweise
+    ev.preventDefault();
+    try{ // Lokales Log jedes Sendeversuchs (im Browser des Absenders)
+      var log = JSON.parse(localStorage.getItem('bd-anfragen-log')||'[]');
+      var dd = new FormData(form);
+      var eintrag = {zeit:new Date().toISOString(), status:'versucht',
+        vorname:dd.get('vorname')||'', nachname:dd.get('nachname')||'',
+        email:dd.get('email')||'', tel:dd.get('tel')||'', nachricht:dd.get('nachricht')||''};
+      log.push(eintrag); if(log.length>20) log = log.slice(-20);
+      localStorage.setItem('bd-anfragen-log', JSON.stringify(log));
+      window.__bdEintrag = eintrag; window.__bdLog = log;
+    }catch(e){}
+    var btn = form.querySelector('[type="submit"], button');
+    var old = btn ? btn.textContent : '';
+    if(btn){ btn.disabled = true; btn.textContent = 'Wird gesendet …'; }
+    var err = document.getElementById('form-error');
+    var ctrl = new AbortController();
+    var timer = setTimeout(function(){ ctrl.abort(); }, 12000);
+    fetch('https://formsubmit.co/ajax/brassdorfer@gmx.at', {
+      method:'POST', body:new FormData(form),
+      headers:{'Accept':'application/json'}, signal:ctrl.signal
+    }).then(function(r){
+      clearTimeout(timer);
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      return r.json();
+    }).then(function(){
+      try{ window.__bdEintrag.status='gesendet';
+        localStorage.setItem('bd-anfragen-log', JSON.stringify(window.__bdLog));
+        localStorage.removeItem('bd-pending'); }catch(e){}
+      window.location.href = '../danke/';
+    }).catch(function(){
+      try{ window.__bdEintrag.status='fehlgeschlagen';
+        localStorage.setItem('bd-anfragen-log', JSON.stringify(window.__bdLog));
+        localStorage.setItem('bd-pending', JSON.stringify(window.__bdEintrag)); }catch(e){}
+      clearTimeout(timer);
+      if(btn){ btn.disabled = false; btn.textContent = old; }
+      if(err){
+        var d = new FormData(form);
+        var body = ['Anfrage über die Website (Formular-Fallback):','',
+          'Name: '+(d.get('vorname')||'')+' '+(d.get('nachname')||''),
+          'E-Mail: '+(d.get('email')||''), 'Telefon: '+(d.get('tel')||''),
+          'Nachricht:', d.get('nachricht')||''].join('\n');
+        var m = document.getElementById('form-mailto');
+        if(m) m.href = 'mailto:brassdorfer@gmx.at?subject='+encodeURIComponent('Anfrage über brassdorfer.at')+'&body='+encodeURIComponent(body);
+        err.style.display = 'block';
+        err.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    });
+  });
+})();
+</script>
+
+<!-- Datenschutz-Hinweis (einmalig, wird im Browser gemerkt) -->
+<div class="hinweis" id="hinweis" role="dialog" aria-label="Datenschutzhinweis">
+  <p>Diese Website verwendet keine Tracking-Cookies. Beim Absenden des Kontaktformulars werden deine Angaben zur Bearbeitung übertragen – Details in der <a href="../datenschutz/">Datenschutzerklärung</a>.</p>
+  <button class="btn btn-gold" id="hinweis-ok" type="button">Alles klar</button>
+</div>
+<script>
+(function(){try{
+  if(!localStorage.getItem('bd-hinweis-ok')){
+    var h=document.getElementById('hinweis');h.style.display='flex';
+    document.getElementById('hinweis-ok').addEventListener('click',function(){
+      localStorage.setItem('bd-hinweis-ok','1');h.style.display='none';});
+  }
+}catch(e){}})();
+</script>
+
+<script>
+/* Falls eine frühere Anfrage nicht gesendet werden konnte: anbieten, sie wiederherzustellen */
+(function(){try{
+  var pend = localStorage.getItem('bd-pending');
+  if(!pend) return;
+  var d = JSON.parse(pend);
+  var form = document.querySelector('form[action*="formsubmit"]');
+  if(!form) return;
+  var box = document.createElement('div');
+  box.style.cssText = 'margin:0 0 18px;padding:14px 16px;border:1px solid #d4a843;border-radius:8px;background:rgba(212,168,67,.12);font-size:.95rem';
+  box.innerHTML = 'Deine letzte Anfrage konnte nicht gesendet werden. '
+    + '<button type="button" class="btn btn-gold" style="padding:8px 14px;font-size:.75rem;margin:8px 8px 0 0" id="bd-restore">Wiederherstellen &amp; erneut senden</button>'
+    + '<button type="button" class="btn" style="padding:8px 14px;font-size:.75rem;margin-top:8px" id="bd-discard">Verwerfen</button>';
+  form.parentNode.insertBefore(box, form);
+  document.getElementById('bd-restore').addEventListener('click', function(){
+    ['vorname','nachname','email','tel','nachricht'].forEach(function(n){
+      var el = form.querySelector('[name="'+n+'"]'); if(el && d[n]) el.value = d[n];
+    });
+    box.remove(); form.scrollIntoView({behavior:'smooth'});
+  });
+  document.getElementById('bd-discard').addEventListener('click', function(){
+    localStorage.removeItem('bd-pending'); box.remove();
+  });
+}catch(e){}})();
+</script>
+</body>
+</html>
