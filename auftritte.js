@@ -29,7 +29,7 @@ window.BRASSDORFER_AUFTRITTE = [
     info: ""
   },
   {
-    status: "kommend",
+    status: "vergangen",
     datum: "2026-06-12",
     titel: "Musikfest Moosdorf",
     ort: "AT-5141 Moosdorf, Oberösterreich",
