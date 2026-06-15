@@ -56,6 +56,13 @@ window.BRASSDORFER_AUFTRITTE = [
     ort: "AT-5122 Hochburg-Ach, Oberösterreich",
     info: ""
   }
+   {
+    status: "kommend",
+    datum: "2026-10-31",
+    titel: "LJ Ball Bezirk Braunau",
+    ort: "AT-5261 Uttendorf, Oberösterreich",
+    info: ""
+  }
 ];
 
 (function(){
