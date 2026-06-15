@@ -55,7 +55,7 @@ window.BRASSDORFER_AUFTRITTE = [
     titel: "FF-Fest Hochburg-Ach",
     ort: "AT-5122 Hochburg-Ach, Oberösterreich",
     info: ""
-  }
+  },
    {
     status: "kommend",
     datum: "2026-10-31",
