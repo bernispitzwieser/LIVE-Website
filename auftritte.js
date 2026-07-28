@@ -36,7 +36,7 @@ window.BRASSDORFER_AUFTRITTE = [
     info: ""
   },
   {
-    status: "kommend",
+    status: "vergangen",
     datum: "2026-07-03",
     titel: "Waldfest Lamprechtshausen",
     ort: "AT-5112 Lamprechtshausen, Salzburg",
