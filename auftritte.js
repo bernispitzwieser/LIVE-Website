@@ -43,14 +43,14 @@ window.BRASSDORFER_AUFTRITTE = [
     info: ""
   },
   {
-    status: "kommend",
+    status: "vergangen",
     datum: "2026-09-06",
     titel: "Kornmandlfest Lochen",
     ort: "AT-5221 Lochen am See, Oberösterreich",
     info: ""
   },
   {
-    status: "kommend",
+    status: "vergangen",
     datum: "2026-09-11",
     titel: "FF-Fest Hochburg-Ach",
     ort: "AT-5122 Hochburg-Ach, Oberösterreich",
