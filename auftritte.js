@@ -59,7 +59,7 @@ window.BRASSDORFER_AUFTRITTE = [
    {
     status: "kommend",
     datum: "2026-10-31",
-    titel: "LJ Ball Bezirk Braunau",
+    titel: "LJ-Ball Bezirk Braunau",
     ort: "AT-5261 Uttendorf, Oberösterreich",
     info: ""
   }
