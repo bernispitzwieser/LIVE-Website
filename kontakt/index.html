@@ -1417,11 +1417,55 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
 
 
 <script>
-/* Robustes Formular: sendet per Skript an FormSubmit; bei Fehler erscheint eine
-   Meldung mit Mail-Fallback. Ohne JavaScript greift weiter der normale Versand. */
+/* Robustes Formular: FormSubmit zuerst, bei Fehler automatisch Web3Forms.
+   Erst wenn beide scheitern, erscheint der bisherige Mail-Fallback.
+   Ohne JavaScript greift weiterhin der normale HTML-Versand über FormSubmit. */
 (function(){
+  // Web3Forms dient als automatischer Ersatz bei Fehlern von FormSubmit.
+  // Nur wenn der Key entfernt wird, ist der Backup-Versand deaktiviert.
+  var WEB3FORMS_ACCESS_KEY = '655b28a3-fc09-43ad-9d16-0d1dd0889f53';
   var form = document.querySelector('form[action*="formsubmit"]');
   if(!form || !window.fetch) return;
+
+  function sendWeb3Forms(){
+    if(!WEB3FORMS_ACCESS_KEY) return Promise.reject(new Error('Web3Forms noch nicht eingerichtet'));
+    var d = new FormData(form);
+    // Nur die tatsächlichen Kontaktfelder übermitteln, keine FormSubmit-Steuerfelder.
+    var payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: 'Neue Anfrage über brassdorfer.at',
+      from_name: 'Brassdorfer Website',
+      botcheck: !!d.get('_honey'),
+      vorname: d.get('vorname') || '',
+      nachname: d.get('nachname') || '',
+      email: d.get('email') || '',
+      tel: d.get('tel') || '',
+      dauer: d.get('dauer') || '',
+      stadt: d.get('stadt') || '',
+      strasse: d.get('strasse') || '',
+      nachricht: d.get('nachricht') || ''
+    };
+    var backupCtrl = new AbortController();
+    var backupTimer = setTimeout(function(){ backupCtrl.abort(); }, 12000);
+    return fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify(payload),
+      signal: backupCtrl.signal
+    }).then(function(r){
+      if(!r.ok) throw new Error('Web3Forms HTTP '+r.status);
+      return r.json();
+    }).then(function(data){
+      // Web3Forms kann auch mit HTTP 200 einen fachlichen Fehler zurückgeben.
+      if(!data || data.success !== true) throw new Error('Web3Forms: Versand nicht bestätigt');
+    }).then(function(){
+      clearTimeout(backupTimer);
+    }, function(e){
+      clearTimeout(backupTimer);
+      throw e;
+    });
+  }
+
   form.addEventListener('submit', function(ev){
     if(!form.checkValidity()) return; // Browser zeigt Pflichtfeld-Hinweise
     ev.preventDefault();
@@ -1448,6 +1492,12 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
       clearTimeout(timer);
       if(!r.ok) throw new Error('HTTP '+r.status);
       return r.json();
+    }).then(function(data){
+      if(data && (data.success === false || data.success === 'false'))
+        throw new Error('FormSubmit: Versand nicht bestätigt');
+    }).catch(function(){
+      clearTimeout(timer);
+      return sendWeb3Forms();
     }).then(function(){
       try{ window.__bdEintrag.status='gesendet';
         localStorage.setItem('bd-anfragen-log', JSON.stringify(window.__bdLog));
